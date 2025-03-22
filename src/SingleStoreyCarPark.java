@@ -1,8 +1,8 @@
 public class SingleStoreyCarPark extends CarPark {
     private boolean hasOutdoorParking;
 
-    SingleStoreyCarPark(String name, String location, int capacity, Barrier barrier, Sensor sensor, FullSign fullSign, IDReader idReader, boolean hasOutdoorParking) {
-        super(name, location, capacity, barrier, sensor, fullSign, idReader);
+    SingleStoreyCarPark(String name, String location, int capacity, IDReader idReader, boolean hasOutdoorParking) {
+        super(name, location, capacity, idReader);
         this.hasOutdoorParking = hasOutdoorParking;
     }
 

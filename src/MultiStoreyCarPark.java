@@ -3,8 +3,8 @@ public class MultiStoreyCarPark extends CarPark {
     private boolean hasElevators;
     private boolean hasRampAccess;
 
-    MultiStoreyCarPark(String name, String location, int capacity, Barrier barrier, Sensor sensor, FullSign fullSign, IDReader idReader, int numberOfFloors) {
-        super(name, location, capacity, barrier, sensor, fullSign, idReader);
+    MultiStoreyCarPark(String name, String location, int capacity, IDReader idReader, int numberOfFloors) {
+        super(name, location, capacity, idReader);
         this.numberOfFloors = numberOfFloors;
     }
 

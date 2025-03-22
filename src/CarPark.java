@@ -10,15 +10,15 @@ public abstract class CarPark {
     private IDReader idReader;
 
 
-    CarPark(String name, String location, int capacity, Barrier barrier, Sensor sensor, FullSign fullSign, IDReader idReader) {
+    CarPark(String name, String location, int capacity, IDReader idReader) {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
         this.freeSpaces = this.capacity;
         this.occupiedSpaces = 0;
-        this.barrier = barrier;
-        this.sensor = sensor;
-        this.fullSign = fullSign;
+        this.barrier = new Barrier();
+        this.sensor = new Sensor();
+        this.fullSign = new FullSign();
         this.idReader = idReader;
     }
 
