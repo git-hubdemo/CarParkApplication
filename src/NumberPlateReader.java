@@ -1,9 +1,11 @@
 public class NumberPlateReader extends IDReader{
 
-    NumberPlateReader(int serialNumber){
-        super(serialNumber);
+    NumberPlateReader(){
+        super();
     }
 
     @Override
-    public void read(){}
+    public String readId(){
+        return null;
+    }
 }

@@ -1,9 +1,12 @@
-public abstract class IDReader {
-    private int serialNumber;
+import java.util.Random;
 
-    IDReader(int serialNumber) {
-        this.serialNumber = serialNumber;
+public abstract class IDReader {
+    private String serialNumber;
+
+    IDReader() {
+        Random random = new Random();
+        this.serialNumber = "A" + (100000 + random.nextInt(999999));
     }
 
-    abstract void read();
+    abstract String readId();
 }
