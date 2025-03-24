@@ -4,10 +4,10 @@ public abstract class CarPark {
     protected int capacity;
     protected int freeSpaces;
     protected int occupiedSpaces;
-    private Barrier barrier;
-    private Sensor sensor;
-    private FullSign fullSign;
-    private IDReader idReader;
+    protected Barrier barrier;
+    protected Sensor sensor;
+    protected FullSign fullSign;
+    protected IDReader idReader;
 
 
     CarPark(String name, String location, int capacity, IDReader idReader) {

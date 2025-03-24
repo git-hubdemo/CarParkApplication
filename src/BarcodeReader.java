@@ -12,7 +12,7 @@ public class BarcodeReader extends IDReader{
         StringBuilder sb = new StringBuilder();
         String alphabets = "ABCD";
 
-        // use the alphabets above to randomly generate a 5 character code for the first part of the barcode
+        // use the alphabets above to randomly generate a 4 character code for the first part of the barcode
         for(int i = 0; i < alphabets.length(); i++){
             sb.append(alphabets.charAt(random.nextInt(alphabets.length())));
         }
@@ -21,14 +21,19 @@ public class BarcodeReader extends IDReader{
 
         return firstHalf +"-"+ secondHalf;
     }
+
+
     @Override
     public String readId(){
-        return null;
-    }
+        System.out.println("Enter barcode to exit");
 
-
-    public static void main(String[] args) {
-        BarcodeReader reader = new BarcodeReader();
-        System.out.println(reader.generateBarcode());
+        // Validate barcode format first here before sending it to get checked in the records
+        while(true){
+            String barcode = scanner.nextLine().trim();
+            if(barcode.matches("^[ABCD]{4}-[1-9]\\d{3}$")){
+                return barcode;
+            }
+            System.out.println("Invalid barcode format! Check your ticket and try again");
+        }
     }
 }
