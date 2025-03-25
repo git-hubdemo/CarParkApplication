@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public abstract class CarPark {
     protected String name;
     protected String location;
@@ -8,6 +10,7 @@ public abstract class CarPark {
     protected Sensor sensor;
     protected FullSign fullSign;
     protected IDReader idReader;
+    protected HashSet<String> parkedCars;
 
 
     CarPark(String name, String location, int capacity, IDReader idReader) {
@@ -20,6 +23,7 @@ public abstract class CarPark {
         this.sensor = new Sensor();
         this.fullSign = new FullSign();
         this.idReader = idReader;
+        this.parkedCars = new HashSet<>();
     }
 
 
