@@ -1,16 +1,16 @@
 import java.util.HashSet;
 
-public abstract class CarPark {
-    protected String name;
-    protected String location;
-    protected int capacity;
-    protected int freeSpaces;
-    protected int occupiedSpaces;
-    protected Barrier barrier;
-    protected Sensor sensor;
-    protected FullSign fullSign;
-    protected IDReader idReader;
-    protected HashSet<String> parkedCars;
+public class CarPark {
+    private String name;
+    private String location;
+    private int capacity;
+    private int freeSpaces;
+    private int occupiedSpaces;
+    private Barrier barrier;
+    private Sensor sensor;
+    private FullSign fullSign;
+    private IDReader idReader;
+    private HashSet<String> parkedCars;
 
 
     CarPark(String name, String location, int capacity, IDReader idReader) {
@@ -27,8 +27,8 @@ public abstract class CarPark {
     }
 
 
-    public abstract void parkCar();
-    public abstract void unparkCar();
+    public void parkCar(){};
+    public void unparkCar(){};
 
     void incrementSpaces(){}
 
@@ -40,5 +40,80 @@ public abstract class CarPark {
 
     int spacesLeft(){
         return capacity - occupiedSpaces;
+    }
+
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getFreeSpaces() {
+        return freeSpaces;
+    }
+
+    public void setFreeSpaces(int freeSpaces) {
+        this.freeSpaces = freeSpaces;
+    }
+
+    public int getOccupiedSpaces() {
+        return occupiedSpaces;
+    }
+
+    public void setOccupiedSpaces(int occupiedSpaces) {
+        this.occupiedSpaces = occupiedSpaces;
+    }
+
+    public Barrier getBarrier() {
+        return barrier;
+    }
+
+    public void setBarrier(Barrier barrier) {
+        this.barrier = barrier;
+    }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
+
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
+    }
+
+    public FullSign getFullSign() {
+        return fullSign;
+    }
+
+    public void setFullSign(FullSign fullSign) {
+        this.fullSign = fullSign;
+    }
+
+    public IDReader getIdReader() {
+        return idReader;
+    }
+
+    public void setIdReader(IDReader idReader) {
+        this.idReader = idReader;
     }
 }
