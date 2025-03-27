@@ -24,14 +24,22 @@ public class CarParkSystem {
         }
 
         System.out.println("**********Simulation Starts**********");
-        chosenCarPark.update();
-
+        // Start the simulation loop.
+        for(int i = 0; i < 10; i++){
+            chosenCarPark.manageOperations();
+            System.out.println(i + ": polling car park components and reacting to state");
+            try {
+                System.in.read();
+            }
+            catch (Exception e) {
+            }
+        }
     }
 
 
     public CarPark chooseCarPark() {
-        carParks.add(new CarPark("NCP - The City Gates", "Swansea", 50, new BarcodeReader()));
-        carParks.add(new CarPark("NCP - Orchard Street", "Swansea", 20, new NumberPlateReader()));
+        carParks.add(new CarPark("NCP - The City Gates", "Swansea", 5, new BarcodeReader()));
+        carParks.add(new CarPark("NCP - Orchard Street", "Swansea", 7, new NumberPlateReader()));
 
         for (int i =0; i<carParks.size(); i++) {
             System.out.println(i + ". " + carParks.get(i).getName());

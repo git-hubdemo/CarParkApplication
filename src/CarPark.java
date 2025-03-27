@@ -29,7 +29,8 @@ public class CarPark {
     }
 
 
-    public void update(){
+    // Manage/process car park operations(car park cycle)
+    public void manageOperations(){
         String carAtEntrance = InputValidator.getYesOrNoInput("Is a car at the entrance? (yes/no):"); // Validate that the user chooses either yes or no.
 
         if(carAtEntrance.equalsIgnoreCase("yes")){
