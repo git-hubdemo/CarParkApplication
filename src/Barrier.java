@@ -5,9 +5,13 @@ public class Barrier {
         this.up = false; //Barrier starts in the down position
     }
 
-    void raise(){}
+    void raise(){
+        this.up = true;
+    }
 
-    void lower(){}
+    void lower(){
+        this.up = false;
+    }
 
     boolean isUp(){
         return this.up;

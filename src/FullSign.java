@@ -5,9 +5,13 @@ public class FullSign {
         lightOn = false;
     }
 
-    void switchOn(){}
+    void switchOn(){
+        lightOn = true;
+    }
 
-    void switchOff(){}
+    void switchOff(){
+        lightOn = false;
+    }
 
     boolean isLightOn() {
         return lightOn;
