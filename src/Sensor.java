@@ -5,15 +5,17 @@ public class Sensor {
         this.carDetected = false;
     }
 
-    void detectCar(){
+    void detectCar(String location){
         this.carDetected = true;
+        System.out.println("Sensor: Car detected at the " + location + "!");
     }
 
-    public void reset(){
+    public void reset(String location){
         this.carDetected = false;
+        System.out.println("Sensor: Turning off " + location + " sensor.");
     }
 
-    public boolean isCarDetected(){
+    public boolean isCarPresent(){
         return this.carDetected;
     }
 }

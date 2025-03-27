@@ -9,6 +9,7 @@ public class NumberPlateReader extends IDReader{
         // Validate number plate
         while(true){
             String numberPlate = scanner.nextLine().trim();
+            System.out.println("🔍 Checking Number Plate : " + numberPlate + "...");
             if(numberPlate.matches("^[A-Z]{2}\\d{2}\\s?[A-Z]{3}$")){
                 return numberPlate;
             }

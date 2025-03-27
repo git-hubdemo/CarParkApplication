@@ -5,12 +5,36 @@ public class Barrier {
         this.up = false; //Barrier starts in the down position
     }
 
-    void raise(){
-        this.up = true;
+    void raise(String location){
+        if(!up){
+            System.out.print("🔴 " + location + " barrier raising");
+            for (int i = 0; i < 3; i++) {
+                try {
+                    Thread.sleep(700);
+                    System.out.print(".");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("✅ Barrier fully raised!");
+            this.up = true;
+        }
     }
 
-    void lower(){
-        this.up = false;
+    void lower(String location){
+        if(this.up){
+            System.out.printf("🔴 " + location + " barrier lowering");
+            for (int i = 0; i < 3; i++) {
+                try {
+                    Thread.sleep(700);
+                    System.out.print(".");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("✅ Barrier fully lowered!");
+            this.up = false;
+        }
     }
 
     boolean isUp(){
