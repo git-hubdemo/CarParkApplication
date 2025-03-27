@@ -6,8 +6,6 @@ public class NumberPlateReader extends IDReader{
 
     @Override
     public String readId(){
-        System.out.println("Enter your car number plate (e.g AB12 XYZ or CD34LMN)");
-
         // Validate number plate
         while(true){
             String numberPlate = scanner.nextLine().trim();

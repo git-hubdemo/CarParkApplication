@@ -25,8 +25,6 @@ public class BarcodeReader extends IDReader{
 
     @Override
     public String readId(){
-        System.out.println("Enter barcode to exit");
-
         // Validate barcode format first here before sending it to get checked in the records
         while(true){
             String barcode = scanner.nextLine().trim();
