@@ -27,11 +27,21 @@ public class CarParkSystem {
         // Start the simulation loop.
         for(int i = 0; i < 10; i++){
             chosenCarPark.manageOperations();
-            System.out.println(i + ": polling car park components and reacting to state");
+            System.out.println("Iteration " + (i + 1) + " of 10: polling car park components and reacting to state");
+
+            // Ask the user if they want to continue only when they are not on the second to last iteration
+            String continueChoice = InputValidator.getYesOrNoInput("Do you want to continue the simulation? (yes/no):");
+            if (continueChoice.equalsIgnoreCase("no")) {
+                System.out.println("Simulation ended.");
+                break; // Exit the loop
+            }
+
             try {
+                System.out.println("Press Enter to continue to the next car park operation...");
                 System.in.read();
             }
             catch (Exception e) {
+                System.out.println("An error occurred while waiting for input. Please try again.");
             }
         }
     }
@@ -39,7 +49,7 @@ public class CarParkSystem {
 
     public CarPark chooseCarPark() {
         carParks.add(new CarPark("NCP - The City Gates", "Swansea", 5, new BarcodeReader()));
-        carParks.add(new CarPark("NCP - Orchard Street", "Swansea", 7, new NumberPlateReader()));
+        carParks.add(new CarPark("NCP - Orchard Street", "Swansea", 5, new NumberPlateReader()));
 
         for (int i =0; i<carParks.size(); i++) {
             System.out.println(i + ". " + carParks.get(i).getName());

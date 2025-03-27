@@ -7,7 +7,7 @@ public abstract class IDReader {
 
     IDReader() {
         Random random = new Random();
-        this.serialNumber = "A" + (100000 + random.nextInt(999999));
+        this.serialNumber = "A" + (100000 + random.nextInt(900000));
         this.scanner = new Scanner(System.in);
     }
 
