@@ -11,6 +11,24 @@ public class CarParkSystem {
     }
 
 
+    public void startSimulation() {
+        System.out.println("Welcome to the Car Park Simulation!");
+        System.out.println("Select a car park from the list below:");
+        CarPark chosenCarPark = this.chooseCarPark();
+
+        System.out.printf("You have selected %s located in %s\n", chosenCarPark.getName(), chosenCarPark.getLocation());
+
+        // Check what type of id reader is used in the chosen car park so that the user can be informed
+        if(chosenCarPark.getIdReader() instanceof BarcodeReader){
+            System.out.println("The car park you chose uses a barcode system. A barcode will be generated for you.");
+        }
+
+        System.out.println("**********Simulation Starts**********");
+        chosenCarPark.update();
+
+    }
+
+
     public CarPark chooseCarPark() {
         carParks.add(new CarPark("NCP - The City Gates", "Swansea", 50, new BarcodeReader()));
         carParks.add(new CarPark("NCP - Orchard Street", "Swansea", 20, new NumberPlateReader()));
@@ -20,33 +38,14 @@ public class CarParkSystem {
         }
 
         while (true) {
-            int input = validateNumber(scanner.nextLine()); // Validates the user input to make sure it's a number
+            int input = InputValidator.validateNumber(scanner.nextLine()); // Validates the user input to make sure it's a number
 
             if (input >= 0 && input < carParks.size()) {
                 return carParks.get(input);
             }
 
-            System.out.println("Invalid input. Try again.");
+            System.out.println("Invalid option. Try again.");
         }
-
-    }
-
-    public int validateNumber(String input){
-
-        int number = -1;
-        boolean isValidNumber = false;
-
-        while(!isValidNumber){
-            try{
-                number = Integer.parseInt(input);
-                isValidNumber = true;
-
-            }catch (NumberFormatException e){
-                System.out.println("Invalid number! try again");
-                input = scanner.nextLine();
-            }
-        }
-        return number;
 
     }
 }
