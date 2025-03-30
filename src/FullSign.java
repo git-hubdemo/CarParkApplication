@@ -7,15 +7,17 @@ public class FullSign {
 
     void switchOn(){
         lightOn = true;
-        System.out.println("🚨 FULL SIGN ON: Car park is full!");
     }
 
     void switchOff(){
         lightOn = false;
-        System.out.println("✅ FULL SIGN OFF: Spaces available.");
     }
 
     boolean isLightOn() {
         return lightOn;
+    }
+
+    void displayFullSign() {
+        System.out.println("🚨 FULL SIGN ON: Car park is full!");
     }
 }

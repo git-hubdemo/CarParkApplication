@@ -6,7 +6,7 @@ public class Barrier {
     }
 
     void raise(String location){
-        if(!up){
+        if(!isUp()){
             System.out.print("🔴 " + location + " barrier raising");
             for (int i = 0; i < 3; i++) {
                 try {
@@ -22,7 +22,7 @@ public class Barrier {
     }
 
     void lower(String location){
-        if(this.up){
+        if(isUp()){
             System.out.printf("🔴 " + location + " barrier lowering");
             for (int i = 0; i < 3; i++) {
                 try {
