@@ -1,4 +1,4 @@
-public class NumberPlateReader extends IDReader{
+public class NumberPlateReader extends IDReader<String> {
 
     NumberPlateReader(){
         super();
@@ -14,6 +14,15 @@ public class NumberPlateReader extends IDReader{
                 return numberPlate;
             }
             System.out.println("Invalid number plate format! Try again");
+        }
+    }
+
+    @Override
+    public void displayEntranceOrExitMessage(String location){
+        if (location.equalsIgnoreCase("entrance")) {
+            System.out.println("Enter your car number plate (e.g AB12 XYZ or CD34LMN) to enter.");
+        } else {
+            System.out.println("Enter your car number plate to exit.");
         }
     }
 }

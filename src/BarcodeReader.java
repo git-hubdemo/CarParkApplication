@@ -1,38 +1,34 @@
 import java.util.Random;
 
-public class BarcodeReader extends IDReader{
+public class BarcodeReader extends IDReader<Integer>{
 
     BarcodeReader() {
         super();
     }
 
     // Generate a random barcode for entry to simulate a real world barcode reader machine that prints out a ticket with barcode
-    public String generateBarcode(){
+    public int generateBarcode(){
         Random random = new Random();
-        StringBuilder sb = new StringBuilder();
-        String alphabets = "ABCD";
-
-        // use the alphabets above to randomly generate a 4 character code for the first part of the barcode
-        for(int i = 0; i < 4; i++){
-            sb.append(alphabets.charAt(random.nextInt(alphabets.length())));
-        }
-        String firstHalf = sb.toString();
-        String secondHalf = String.valueOf(1000 + random.nextInt(9000));
-
-        return firstHalf +"-"+ secondHalf;
+        return 1000 + (random.nextInt(9000));
     }
 
 
     @Override
-    public String readId(){
+    public Integer readId(){
         // Validate barcode format first here before sending it to get checked in the records
-        while(true){
-            String barcode = scanner.nextLine().trim();
-            System.out.println("🔍 Scanning Barcode : " + barcode + "...");
-            if(barcode.matches("^[ABCD]{4}-[1-9]\\d{3}$")){
-                return barcode;
-            }
-            System.out.println("Invalid barcode format! Check your ticket and try again");
+        String input = scanner.nextLine().trim();
+        System.out.println("🔍 Checking Barcode : " + input + "...");
+        int barcode = InputValidator.validateNumber(input);
+        return barcode;
+    }
+
+    @Override
+    public void displayEntranceOrExitMessage(String location){
+        if(location.equalsIgnoreCase("entrance")) {
+            System.out.println("\t\t✅ A barcode has been generated for your vehicle.\n\t\tIt will be printed on your ticket. Please keep your ticket safe.");
+        }
+        else{
+            System.out.println("Please enter the barcode on your ticket to exit>>.");
         }
     }
 }
