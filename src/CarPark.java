@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class CarPark {
@@ -10,8 +11,9 @@ public class CarPark {
     private Sensor entrySensor;
     private Sensor exitSensor;
     private FullSign fullSign;
-    private IDReader idReader;
-    private HashSet<String> parkedCars;
+    private IDReader<?> idReader;
+    private HashSet<Object> parkedCars;
+    private HashMap<Object, Ticket<?>> activeTickets;
 
 
     CarPark(String name, String location, int capacity, IDReader idReader) {
@@ -26,6 +28,7 @@ public class CarPark {
         this.fullSign = new FullSign();
         this.idReader = idReader;
         this.parkedCars = new HashSet<>();
+        this.activeTickets = new HashMap<>();
     }
 
 
@@ -34,47 +37,39 @@ public class CarPark {
         String carAtEntrance = InputValidator.getYesOrNoInput("Is a car at the entrance? (yes/no):"); // Validate that the user chooses either yes or no.
 
         if(carAtEntrance.equalsIgnoreCase("yes")){
-            String vehicleIdentifier; //used to store either number plate or barcode
-
             entrySensor.detectCar("entrance");
 
             // Check if there is space in the car park first before trying to let them in
             if(fullSign.isLightOn()){
-                System.out.println("The car park is full! entry denied");
+                fullSign.displayFullSign();
                 entrySensor.reset("entrance"); //turn entry sensor off
             }
             else{
-                // Check if the car park uses a barcode reader so that a barcode can be generated for the user
-                if(idReader instanceof BarcodeReader){
-                    vehicleIdentifier = ((BarcodeReader) idReader).generateBarcode();
-                    System.out.printf("\t\tYour barcode: **%s**\nPlease keep this barcode safe. You will need it to exit.\n",  vehicleIdentifier);
-                }else{
-                    // car park uses number plate reader - ask user for number plate and validate it.
-                    System.out.println("Enter your car number plate (e.g AB12 XYZ or CD34LMN)");
-                    vehicleIdentifier = idReader.readId();
-                }
-
+                idReader.displayEntranceOrExitMessage("entrance");
+                // If the car park uses a barcode reader, a barcode can be generated for the vehicle. if not read and validate their id
+                Object vehicleIdentifier = idReader instanceof BarcodeReader ? ((BarcodeReader) idReader).generateBarcode() : idReader.readId(); // Explicit type casting is needed because generateBarcode() is a method exclusive to the BarcodeReader class and is not available in the IDReader class.
 
                 if(parkedCars.add(vehicleIdentifier)){ // This does a check for duplicates and adds the car at the same time if no duplicates are found (HashSet returns true or false)
                     entryBarrier.raise("Entrance");
                     decrementSpaces();
-                    System.out.println("Car with id " + vehicleIdentifier + " successfully parked! Remaining spaces: " + spacesLeft());
+                    System.out.println("Car with ID " + vehicleIdentifier + " successfully parked! Remaining spaces: " + spacesLeft());
                     entryBarrier.lower("Entrance");
                     entrySensor.reset("entrance");
+                    // Generate a ticket with the vehicle ID
+                    System.out.println();
+                    issueTicket(vehicleIdentifier);
+                    System.out.println();
                 }else{
-                    System.out.printf("There is already a car with the id - %s parked!\n", vehicleIdentifier);
+                    System.out.println("Duplicate entry detected! Car with ID " + vehicleIdentifier + " is already parked.");
                 }
             }
         }
 
         String carAtExit = InputValidator.getYesOrNoInput("Is a car at the exit? (yes/no):");
         if(carAtExit.equalsIgnoreCase("yes")){
-            String vehicleIdentifier;
-
             exitSensor.detectCar("exit");
-
-            System.out.println((idReader instanceof BarcodeReader) ? "Enter your barcode to exit:" : "Enter your number plate to exit:"); // asks for the right id based on the car park's id reader type
-            vehicleIdentifier = idReader.readId(); //readId() validates the id first before returning it
+            idReader.displayEntranceOrExitMessage("exit"); // asks for the right id based on the car park's id reader type
+            Object vehicleIdentifier = idReader.readId(); //readId() validates the id first before returning it
 
             if(parkedCars.remove(vehicleIdentifier)){ // This does a check to see if the vehicle id is found
                 exitBarrier.raise("Exit");
@@ -82,18 +77,41 @@ public class CarPark {
                 System.out.println("Car with id " + vehicleIdentifier + " successfully exited the car park! Remaining spaces: " + spacesLeft());
                 exitBarrier.lower("Exit");
                 exitSensor.reset("exit");
+                // Remove the ticket for that vehicle id
+                removeTicket(vehicleIdentifier);
             }else{
-                System.out.printf("Exit denied. The car with the id - %s is not in the car park.\n", vehicleIdentifier);
+                System.out.printf("❌ Exit denied. A car with the ID - %s is not in the car park.\n", vehicleIdentifier);
             }
         }
 
         // Check if the car park is full after doing the entry and exit steps
+        System.out.println();
         if(spacesLeft() <= 0){
             fullSign.switchOn();
         }else{
             fullSign.switchOff();
         }
+
+        System.out.println(parkedCars);
+        System.out.println(activeTickets);
     }
+
+    public <T> void issueTicket(T vehicleId){
+        Ticket<T> ticket = new Ticket<>(vehicleId, this.name); // The ticket created will be the same type as the vehicle id passed in (Integer, String)
+        activeTickets.put(vehicleId, ticket);
+        ticket.printTicket();
+    }
+
+    public <T> void removeTicket(T vehicleId){
+        if(activeTickets.containsKey(vehicleId)){
+            activeTickets.remove(vehicleId);
+            System.out.println("Ticket removed for car with ID: " + vehicleId);
+        }
+        else{
+            System.out.println("No active ticket found for ID: " + vehicleId);
+        }
+    }
+
 
     void incrementSpaces(){
         freeSpaces++;
