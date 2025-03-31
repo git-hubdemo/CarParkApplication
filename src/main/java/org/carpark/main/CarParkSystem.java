@@ -1,3 +1,9 @@
+package org.carpark.main;
+
+import org.carpark.readers.BarcodeReader;
+import org.carpark.readers.NumberPlateReader;
+import org.carpark.utils.InputValidator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,7 +12,7 @@ public class CarParkSystem {
     private static Scanner scanner = new Scanner(System.in);
     private List<CarPark> carParks;
 
-    CarParkSystem() {
+    public CarParkSystem() {
         this.carParks = new ArrayList<>();
     }
 

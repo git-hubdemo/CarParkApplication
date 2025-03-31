@@ -1,7 +1,9 @@
+package org.carpark.main;
+
 public class Barrier {
     private boolean up;
 
-    Barrier() {
+    public Barrier() {
         this.up = false; //Barrier starts in the down position
     }
 

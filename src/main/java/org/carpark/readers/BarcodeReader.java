@@ -1,8 +1,11 @@
+package org.carpark.readers;
+import org.carpark.utils.InputValidator;
+
 import java.util.Random;
 
 public class BarcodeReader extends IDReader<Integer>{
 
-    BarcodeReader() {
+    public BarcodeReader() {
         super();
     }
 

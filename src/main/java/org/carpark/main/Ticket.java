@@ -1,3 +1,5 @@
+package org.carpark.main;
+
 import java.time.LocalDateTime;
 
 public class Ticket <T>{
@@ -5,7 +7,7 @@ public class Ticket <T>{
     private LocalDateTime entryTime;
     private String carParkName;
 
-    Ticket(T id, String carParkName){
+    public Ticket(T id, String carParkName){
         this.id = id;
         this.entryTime = LocalDateTime.now();
         this.carParkName = carParkName;

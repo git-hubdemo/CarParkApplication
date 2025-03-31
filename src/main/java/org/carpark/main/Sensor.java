@@ -1,7 +1,9 @@
+package org.carpark.main;
+
 public class Sensor {
     private boolean carDetected;
 
-    Sensor(){
+    public Sensor(){
         this.carDetected = false;
     }
 

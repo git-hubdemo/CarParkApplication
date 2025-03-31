@@ -1,3 +1,9 @@
+package org.carpark.main;
+
+import org.carpark.readers.BarcodeReader;
+import org.carpark.readers.IDReader;
+import org.carpark.utils.InputValidator;
+
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -16,7 +22,7 @@ public class CarPark {
     private HashMap<Object, Ticket<?>> activeTickets;
 
 
-    CarPark(String name, String location, int capacity, IDReader idReader) {
+    public CarPark(String name, String location, int capacity, IDReader idReader) {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
@@ -47,7 +53,7 @@ public class CarPark {
             else{
                 idReader.displayEntranceOrExitMessage("entrance");
                 // If the car park uses a barcode reader, a barcode can be generated for the vehicle. if not read and validate their id
-                Object vehicleIdentifier = idReader instanceof BarcodeReader ? ((BarcodeReader) idReader).generateBarcode() : idReader.readId(); // Explicit type casting is needed because generateBarcode() is a method exclusive to the BarcodeReader class and is not available in the IDReader class.
+                Object vehicleIdentifier = idReader instanceof BarcodeReader ? ((BarcodeReader) idReader).generateBarcode() : idReader.readId(); // Explicit type casting is needed because generateBarcode() is a method exclusive to the org.carpark.readers.BarcodeReader class and is not available in the org.carpark.readers.IDReader class.
 
                 if(parkedCars.add(vehicleIdentifier)){ // This does a check for duplicates and adds the car at the same time if no duplicates are found (HashSet returns true or false)
                     entryBarrier.raise("Entrance");

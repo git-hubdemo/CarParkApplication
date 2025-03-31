@@ -1,6 +1,8 @@
+package org.carpark.readers;
+
 public class NumberPlateReader extends IDReader<String> {
 
-    NumberPlateReader(){
+    public NumberPlateReader(){
         super();
     }
 

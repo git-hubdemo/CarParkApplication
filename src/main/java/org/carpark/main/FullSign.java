@@ -1,7 +1,9 @@
+package org.carpark.main;
+
 public class FullSign {
     private boolean lightOn;
 
-    FullSign() {
+    public FullSign() {
         lightOn = false;
     }
 

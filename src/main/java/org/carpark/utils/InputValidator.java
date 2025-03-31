@@ -1,3 +1,5 @@
+package org.carpark.utils;
+
 import java.util.Scanner;
 
 public class InputValidator {
