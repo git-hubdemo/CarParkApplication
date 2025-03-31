@@ -1,4 +1,4 @@
-package org.carpark.main;
+package org.carpark.model;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package org.carpark.utils;
+package org.carpark.util;
 
 import java.util.Scanner;
 

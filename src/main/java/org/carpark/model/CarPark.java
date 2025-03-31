@@ -1,8 +1,8 @@
-package org.carpark.main;
+package org.carpark.model;
 
-import org.carpark.readers.BarcodeReader;
-import org.carpark.readers.IDReader;
-import org.carpark.utils.InputValidator;
+import org.carpark.reader.BarcodeReader;
+import org.carpark.reader.IDReader;
+import org.carpark.util.InputValidator;
 
 import java.util.HashMap;
 import java.util.HashSet;

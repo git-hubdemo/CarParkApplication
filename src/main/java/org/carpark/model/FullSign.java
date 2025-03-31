@@ -1,4 +1,4 @@
-package org.carpark.main;
+package org.carpark.model;
 
 public class FullSign {
     private boolean lightOn;

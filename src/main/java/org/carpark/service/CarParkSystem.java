@@ -1,8 +1,9 @@
-package org.carpark.main;
+package org.carpark.service;
 
-import org.carpark.readers.BarcodeReader;
-import org.carpark.readers.NumberPlateReader;
-import org.carpark.utils.InputValidator;
+import org.carpark.model.CarPark;
+import org.carpark.reader.BarcodeReader;
+import org.carpark.reader.NumberPlateReader;
+import org.carpark.util.InputValidator;
 
 import java.util.ArrayList;
 import java.util.List;

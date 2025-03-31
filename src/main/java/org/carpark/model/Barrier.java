@@ -1,4 +1,4 @@
-package org.carpark.main;
+package org.carpark.model;
 
 public class Barrier {
     private boolean up;

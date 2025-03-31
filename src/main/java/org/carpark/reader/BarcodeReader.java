@@ -1,5 +1,5 @@
-package org.carpark.readers;
-import org.carpark.utils.InputValidator;
+package org.carpark.reader;
+import org.carpark.util.InputValidator;
 
 import java.util.Random;
 
