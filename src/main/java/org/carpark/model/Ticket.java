@@ -22,6 +22,16 @@ public class Ticket <T>{
     }
 
     public void printTicket(){
+        System.out.print("🔴 Printing ticket");
+        for (int i = 0; i < 3; i++) {
+            try {
+                Thread.sleep(700);
+                System.out.print(".");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println();
         String border = "|=======================================|";
         String separator = "|=======================================|";
         String footer = "|=======================================|";
