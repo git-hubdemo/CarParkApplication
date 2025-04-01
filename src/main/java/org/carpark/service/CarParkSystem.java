@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarParkSystem {
-    private static Scanner scanner = new Scanner(System.in);
     private List<CarPark> carParks;
 
     public CarParkSystem() {
@@ -21,7 +20,8 @@ public class CarParkSystem {
     public void startSimulation() {
         System.out.println("Welcome to the Car Park Simulation!");
         System.out.println("Select a car park from the list below:");
-        CarPark chosenCarPark = this.chooseCarPark();
+        Scanner scanner = new Scanner(System.in);
+        CarPark chosenCarPark = this.chooseCarPark(scanner);
 
         System.out.printf("You have selected %s located in %s\n", chosenCarPark.getName(), chosenCarPark.getLocation());
 
@@ -50,7 +50,7 @@ public class CarParkSystem {
     }
 
 
-    public CarPark chooseCarPark() {
+    public CarPark chooseCarPark(Scanner scanner) {
         carParks.add(new CarPark("NCP - The City Gates", "Swansea", 5, new BarcodeReader()));
         carParks.add(new CarPark("NCP - Orchard Street", "Swansea", 5, new NumberPlateReader()));
 
