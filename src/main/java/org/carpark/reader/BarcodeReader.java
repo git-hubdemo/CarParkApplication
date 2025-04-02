@@ -12,7 +12,7 @@ public class BarcodeReader extends IDReader<Integer>{
     // Generate a random barcode for entry to simulate a real world barcode reader machine that prints out a ticket with barcode
     public int generateBarcode(){
         Random random = new Random();
-        return 1000 + (random.nextInt(9000));
+        return 100000 + (random.nextInt(900000));
     }
 
 
@@ -28,7 +28,7 @@ public class BarcodeReader extends IDReader<Integer>{
     @Override
     public void displayEntranceOrExitMessage(String location){
         if(location.equalsIgnoreCase("entrance")) {
-            System.out.println("\t\t✅ A barcode has been generated for your vehicle.\n\t\tIt will be printed on your ticket. Please keep your ticket safe.");
+            System.out.println("\t\t✅ A barcode will be generated for your vehicle.\n\t\tIt will be printed on your ticket. Please keep your ticket safe.");
         }
         else{
             System.out.println("Please enter the barcode on your ticket to exit>>.");

@@ -33,7 +33,7 @@ public class CarParkSystem {
         System.out.println();
         System.out.println("**********Simulation Starts**********");
         // Start the simulation loop.
-        int simulationIterations = 10;
+        int simulationIterations = 15;
         for(int i = 0; i < simulationIterations; i++){
             chosenCarPark.manageOperations();
             System.out.println("Iteration " + (i + 1) + " of " + simulationIterations + ": polling car park components and reacting to state");

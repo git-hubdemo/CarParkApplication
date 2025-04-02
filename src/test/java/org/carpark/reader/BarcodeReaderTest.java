@@ -34,7 +34,7 @@ public class BarcodeReaderTest {
         int generatedBarcode = barcodeReader.generateBarcode();
 
         // Assert that the generated barcode is a four-digit number
-        assertTrue(generatedBarcode >= 1000 && generatedBarcode <= 9999, "Generated barcode should be a four-digit number");
+        assertTrue(generatedBarcode >= 100000 && generatedBarcode <= 999999, "Generated barcode should be a four-digit number");
     }
 
     @Test
@@ -50,7 +50,7 @@ public class BarcodeReaderTest {
         barcodeReader.displayEntranceOrExitMessage("Entrance");
 
         String output = outputStream.toString().trim();
-        String expectedOutput = "\t\t✅ A barcode has been generated for your vehicle.\n\t\tIt will be printed on your ticket. Please keep your ticket safe.".trim();
+        String expectedOutput = "\t\t✅ A barcode will be generated for your vehicle.\n\t\tIt will be printed on your ticket. Please keep your ticket safe.".trim();
 
         assertEquals(expectedOutput, output);
 

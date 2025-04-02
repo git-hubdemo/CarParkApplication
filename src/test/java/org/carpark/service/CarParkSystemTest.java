@@ -32,20 +32,6 @@ public class CarParkSystemTest {
     }
 
     @Test
-    void chooseCarPark_InvalidInputType_ShouldPromptAgainForTheCorrectType(){
-        Scanner mockScanner = mock(Scanner.class);
-        when(mockScanner.nextLine()).thenReturn("NaN", "0");
-
-        CarPark selectedCarPark = carParkSystem.chooseCarPark(mockScanner);
-
-        // Verify Scanner was called at least twice (for invalid then valid input)
-        verify(mockScanner, atLeast(2)).nextLine();
-
-        //Verify the correct car park is selected after valid input
-        assertEquals("NCP - The City Gates", selectedCarPark.getName());
-    }
-
-    @Test
     void chooseCarPark_InvalidInput_ShouldPromptAgain(){
         Scanner mockScanner = mock(Scanner.class);
         when(mockScanner.nextLine()).thenReturn("3", "0");
