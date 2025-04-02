@@ -36,4 +36,22 @@ public class InputValidator {
         }
         return number;
     }
+
+    public static int getNumberInput(String prompt){
+        System.out.println(prompt);
+        return validateNumber(scanner.nextLine());
+
+    }
+
+    public static String getStringInput(String prompt){
+        System.out.println(prompt);
+        while(true){
+            String input = scanner.nextLine();
+            if(!input.equalsIgnoreCase("")){
+                return input;
+            }
+            System.out.println("Please enter a value>");
+
+        }
+    }
 }
