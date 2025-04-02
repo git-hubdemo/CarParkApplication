@@ -42,7 +42,7 @@ public class CarPark {
 
     // Manage/process car park operations(car park cycle)
     public void manageOperations(){
-        String carAtEntrance = InputValidator.getYesOrNoInput("Is a car at the entrance? (yes/no):"); // Validate that the user chooses either yes or no.
+        String carAtEntrance = InputValidator.getYesOrNoInput("Is a vehicle at the entrance? (yes/no):"); // Validate that the user chooses either yes or no.
 
         // Handle vehicle entrance
         if(carAtEntrance.equalsIgnoreCase("yes")){
@@ -71,7 +71,7 @@ public class CarPark {
         }
 
         // Handle vehicle exit
-        String carAtExit = InputValidator.getYesOrNoInput("Is a car at the exit? (yes/no):");
+        String carAtExit = InputValidator.getYesOrNoInput("Is a vehicle at the exit? (yes/no):");
         if(carAtExit.equalsIgnoreCase("yes")){
             exitSensor.detectCar("exit");
             idReader.displayEntranceOrExitMessage("exit");
