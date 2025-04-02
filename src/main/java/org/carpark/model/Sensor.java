@@ -9,7 +9,7 @@ public class Sensor {
 
     void detectCar(String location){
         this.carDetected = true;
-        System.out.println("Sensor: Car detected at the " + location + "!");
+        System.out.println("Sensor: Vehicle detected at the " + location + "!");
     }
 
     public void reset(String location){
