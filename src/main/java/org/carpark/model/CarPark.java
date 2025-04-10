@@ -80,7 +80,7 @@ public class CarPark {
             if(parkedVehicles.containsKey(vehicleId)){
                 unparkVehicle(vehicleId);
             }else{
-                System.out.printf("❌ Exit denied. A car with the ID - %s is not in the car park.\n", vehicleId);
+                System.out.printf("❌ Exit denied. A vehicle with the ID - %s is not in the car park.\n", vehicleId);
             }
         }
 
